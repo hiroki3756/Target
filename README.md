@@ -1,24 +1,25 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+# <アプリ名>
+Target
+## サイト概要
+自分が達成したい目標を立て、達成度の記入や一言コメントを追加できるサイト
 
-Things you may want to cover:
+### サイトテーマ
+目標を投稿してそれに対して達成度の記入、コメントの追加ができる、そのほかにも他のユーザーのフォロー機能、フォローしたユーザーの目標を閲覧できる機能、
+お問い合わせ機能を搭載したサイトです
 
-* Ruby version
+### テーマを選んだ理由
+目標というものは、なかなか達成できないものなので、達成を支援できるサイトがあればいいなと思ったからです
 
-* System dependencies
+### ターゲットユーザ
+全年齢
 
-* Configuration
+### 主な利用シーン
+達成したい目標がある人
+目標を立てたが、なかなか達成できない人
+## 設計書
 
-* Database creation
+### 機能一覧
+https://docs.google.com/spreadsheets/d/1ifg1tZhOdEIunabcC16GluuiGVuxNDOu5S5CVIlU2ww/edit#gid=0
 
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
