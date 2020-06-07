@@ -1,0 +1,19 @@
+<div class="container offset-5">
+    <%= form_for @objective, url:user_objectives_path  do |f| %>
+    <div class="row mb-4">
+        <h4>目標タイトルを入力</h4>
+    </div>
+    <div class="row mb-4">
+        <%= f.text_field :title %>
+    </div>
+    <div class="row mb-4">
+        <h4>目標の詳細を入力</h4>
+    </div>
+    <div class="row mb-4">
+        <%= f.text_area :explain %>
+    </div>
+    <div class="row">
+        <%= f.submit "目標を投稿", class: "new" %>
+    </div>
+    <% end %>
+</div>

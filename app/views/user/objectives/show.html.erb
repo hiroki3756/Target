@@ -1,0 +1,67 @@
+<div class="container">
+    <div class="mb-5 show-title">
+        <h1>詳細</h1>
+    </div>
+    <div class="show">
+        <div class="mb-3">
+            <h4>目標</h4>
+        </div>
+        <div class="mb-5">
+            <%= @objective.title %>
+        </div>
+        <div class="mb-3">
+            <h4>意気込み</h4>
+        </div>
+        <div class="mb-5">
+            <%= @objective.explain %>
+        </div>
+        <div class="mb-3">
+            <h4>達成度</h4>
+        </div>
+        <div class="mb-5">
+            <%= @objective.achievement %>%
+        </div>
+
+        <% if @objective.favorited_by?(current_user) %>
+        <li class="mb-4">
+            <%= link_to user_objective_favorites_path(@objective), method: :delete do %>
+            <i class="fa fa-heart" aria-hidden="true" style="color: red;"></i>
+            <%= @objective.favorites.count %> いいね
+            <% end %>
+        </li>
+        <% else %>
+        <li class="mb-4">
+            <%= link_to user_objective_favorites_path(@objective), method: :post do %>
+            <i class="fa fa-heart-o" aria-hidden="true"></i>
+            <%= @objective.favorites.count %> いいね
+            <% end %>
+        </li>
+        <% end %>
+    </div>
+    <div class="comment">
+        <div class="mb-3">
+            <h4>コメント一覧</h4>
+        </div>
+        <% @comments.each do |comment| %>
+            <div class="mb-4">
+                <%= comment.comment %>
+            </div>
+        <% end %>
+        <div class="form-group">
+            <%= form_for @comment,url: user_objective_comments_path(@objective) do |f| %>
+            <div class="mb-2">
+                <%= f.text_area :comment, class:"form-control", placeholder: "コメントを入力してください" %>
+            </div>
+            <div class="mb-5">
+                <%= f.submit "コメントを投稿する" %>
+            </div>
+            <% end %>
+        </div>
+    </div>
+    <div class="edit-btn">
+        <%= link_to "編集する", edit_user_objective_path(@objective),class: "btn btn-success mb-3" %><br>
+    </div>
+    <div class="destroy-btn">
+        <%= link_to "削除する", user_objective_path, method: :delete, class: "btn btn-danger" %><br>
+    </div>
+</div>

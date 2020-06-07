@@ -1,0 +1,16 @@
+<div class="container">   
+    <div class="row">
+        <h1>ユーザー一覧</h1>
+    </div>
+    <% @users.each do |user| %>
+        <div class="row m-5">
+                <%= attachment_image_tag @user, :profile_image, :fill, 80, 80, fallback: "no_image.png", size:'80x80',class: "mr-5" %>
+                <div class="mr-5 mt-3">  
+                    <%= user.name %> 
+                </div>
+                <div class="mt-3 ml-5">
+                    <%= link_to "詳細", user_user_path(user), class: "user-index-a" %>
+                </div>
+        </div>
+    <% end %>
+</div>

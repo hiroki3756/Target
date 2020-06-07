@@ -1,0 +1,25 @@
+<div class="container offset-5">
+    <%= form_for @user, url: user_user_path do |f| %>
+    <div class="row mb-4">
+        <h4>プロフィール画像を変更</h4>
+    </div>
+    <div class="row mb-4">
+        <%= f.attachment_field :profile_image %>
+    </div>
+    <div class="row mb-4">
+        <h4>名前を入力</h4>
+    </div>
+    <div class="row mb-4">
+        <%= f.text_field :name %><br>
+    </div>
+    <div class="row mb-4">
+        <h2>自己紹介を入力</h2>
+    </div>
+    <div class="row mb-4">
+        <%= f.text_area :introduction %><br>
+    </div>
+    <div class="row">    
+        <%= f.submit "プロフィールを更新", class: "btn btn-seccess" %>
+    </div>
+    <% end %>
+</div>

@@ -1,0 +1,29 @@
+<div class="container">
+  <div class="row m-5 ">
+    <h2>ログイン</h2>
+  </div>
+
+  <div class="form-group">
+    <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+  <div class="row m-5">
+      <%= f.email_field :email, autofocus: true, autocomplete: "email" , class: "form-control", placeholder: "メールアドレスを入力してください" %>
+  </div>
+
+  <div class="row m-5">
+      <%= f.password_field :password, autocomplete: "current-password", class: "form-control", placeholder: "パスワードを入力してください" %>
+  </div>
+
+  <div class="row m-5">
+    <% if devise_mapping.rememberable? %>
+      <%= f.check_box :remember_me %>
+      <%= f.label :ログイン状態を保持する %>
+    <% end %>
+  </div>
+      
+  <%= f.submit "ログインする" , class: "form-control btn-success" %>
+      
+    <% end %>
+
+    <%= render "devise/shared/links" %>
+  </div>
+</div>
