@@ -15,7 +15,34 @@
 //= require turbolinks
 //= require chartkick
 //= require Chart.bundle
-//= require jquery3
+//= require jquery
+//= require jquery_ujs
 //= require popper
 //= require bootstrap-sprockets
 //= require_tree .
+
+
+$(function(){
+var startPos = 0,winScrollTop = 0;
+    $(window).on('scroll',function(){
+    winScrollTop = $(this).scrollTop();
+    if (winScrollTop >= startPos) {
+        $('.header').addClass('hide');
+    } else {
+        $('.header').removeClass('hide');
+    }
+    startPos = winScrollTop;
+});
+
+
+$(window).scroll(function (){
+    $('.fadein').each(function(){
+        var elemPos = $(this).offset().top,
+            scroll = $(window).scrollTop(),
+            windowHeight = $(window).height();
+          if (scroll > elemPos - windowHeight + 100){
+              $(this).addClass('scrollin');
+            }
+        });
+    });
+});

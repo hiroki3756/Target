@@ -1,15 +1,57 @@
 <div class="container">   
-    <div class="row">
+    <%= search_form_for @search,url:user_users_path  do |f| %>
+        <div class="form-group">
+        <%= f.label :name_cont, "ユーザーの名前で検索してください" %>
+        <%= f.text_field :name_cont, class: "form-control" %>
+        </div>
+        <div class="actions"><%= f.submit "検索する" %></div>
+    <% end %>
+    <h4 class="mt-3">検索の結果</h4>
+    <% if @results.any? %>
+        <% @results.each do |result| %>
+            <div class="mb-5 user-index">
+                <%= attachment_image_tag result, :profile_image, :fill, 80, 80, fallback: "no_image.png", size:'80x80',class: "mr-5 user-index-img" %>
+            <div class="mr-5 mt-3">
+                <%= result.name %>
+            </div>
+            <div class="mr-5 mt-3">
+                <%= link_to following_user_user_path(result) do %>
+                    フォロー数<%= result.followings.count %></td>
+                <% end %>
+            </div>
+            <div class="mr-5 mt-3">
+                <%= link_to followers_user_user_path(result) do %>
+                    フォロワー数:<%= result.followers.count %>
+                <% end %>
+            </div>
+            <div class="mt-3 ml-5">
+                <%= link_to "詳細", user_user_path(result), class: "user-index-a btn btn-success" %>
+            </div>
+            </div>
+    <% end %>
+    <% end %>
+
+    <div class="">
         <h1>ユーザー一覧</h1>
     </div>
     <% @users.each do |user| %>
-        <div class="row m-5">
-                <%= attachment_image_tag @user, :profile_image, :fill, 80, 80, fallback: "no_image.png", size:'80x80',class: "mr-5" %>
+        <div class="m-5 user-index">
+                <%= attachment_image_tag user, :profile_image, :fill, 80, 80, fallback: "no_image.png", size:'80x80',class: "mr-5 user-index-img" %>
                 <div class="mr-5 mt-3">  
                     <%= user.name %> 
                 </div>
+                <div class="mr-5 mt-3">
+                    <%= link_to following_user_user_path(user) do %>
+                        フォロー数<%= user.followings.count %></td>
+                    <% end %>
+                </div>
+                <div class="mr-5 mt-3">
+                    <%= link_to followers_user_user_path(user) do %>
+                        フォロワー数:<%= user.followers.count %>
+                    <% end %>
+                </div>
                 <div class="mt-3 ml-5">
-                    <%= link_to "詳細", user_user_path(user), class: "user-index-a" %>
+                    <%= link_to "詳細", user_user_path(user), class: "user-index-a btn btn-success" %>
                 </div>
         </div>
     <% end %>

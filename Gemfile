@@ -74,3 +74,13 @@ gem 'bootstrap', '~> 4.1.1'
 gem 'jquery-rails'
 
 gem 'font-awesome-rails'
+
+gem 'kaminari','~> 1.2.1'
+
+gem 'ransack'
+
+gem 'rails-i18n'
+
+gem 'jquery-rails'
+
+gem 'acts-as-taggable-on', '~> 6.0'

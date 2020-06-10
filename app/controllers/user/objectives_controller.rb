@@ -22,8 +22,12 @@ class User::ObjectivesController < ApplicationController
         user = current_user
         @objective = Objective.new(objective_params)
         @objective.user_id = current_user.id
-        @objective.save!
-        redirect_to user_objectives_path
+        if @objective.save
+            flash[:notice] = "目標を投稿しました"
+            redirect_to user_user_path(user)
+        else
+            render :new
+        end
     end
 
     # 目標の編集画面を表示
@@ -34,8 +38,12 @@ class User::ObjectivesController < ApplicationController
     # 目標を更新する
     def update
         @objective = Objective.find(params[:id])
-        @objective.update(objective_params)
-        redirect_to user_objectives_path
+        if @objective.update(objective_params)
+            flash[:notice] = "目標を更新しました"
+            redirect_to user_objective_path(@objective)
+        else
+            render :edit
+        end
     end
 
     # 目標を削除する
@@ -43,12 +51,13 @@ class User::ObjectivesController < ApplicationController
         objective = Objective.find(params[:id])
         user = objective.user
         objective.destroy
-        redirect_to user_objectives_path
+        flash[:alert] = "目標を削除しました"
+        redirect_to user_user_path(user)
     end
 
     private
         def objective_params
-            params.require(:objective).permit(:title, :explain, :user_id, :category_id, :comment_id, :achievement)
+            params.require(:objective).permit(:title, :explain, :user_id, :category_id, :comment_id, :achievement, :tag_list)
         end
 
 end

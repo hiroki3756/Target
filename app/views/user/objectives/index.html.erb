@@ -1,31 +1,44 @@
+<% if flash[:notice] %>
+    <div class="flash">
+        <%= flash[:notice] %>
+    </div>
+<% end %>
+
+<% if flash[:alert] %>
+    <div class="alert">
+        <%= flash[:alert] %>
+    </div>
+<% end %>
+
+
+
 <div class="container">
-    
-        <div class="mb-4 mt-3 index">
-            <img src="/assets/sun.gif" class="sun"><h4>目標一覧</h4><img src="/assets/sun.gif" class="sun">
+    <div class="mb-4 mt-3 index">
+        <img src="/assets/sun.gif" class="sun"><h4>目標一覧</h4><img src="/assets/sun.gif" class="sun">
+    </div>
+    <%# 目標のタイトルと説明を表示 %>
+    <% @objectives.each do |objective| %>
+    <div class="target">
+        <div class="mb-4">
+            <h4>目標</h4>
         </div>
-        <%# 目標のタイトルと説明を表示 %>
-        <% @objectives.each do |objective| %>
-        <div class="target">
-            <div class="mb-4">
-                <h4>目標</h4>
-            </div>
-            <div class="mb-4">
-                ・<%= objective.title %>
-            </div>
-            <div class="mb-4">
-                <h4>意気込み</h4>
-            </div>
-            <div class="mb-4">
-                ・<%= objective.explain %>
-            </div>
-            <div class="mb-4">
-                <h3>達成度</h3>
-            </div>
-            <div class="mb-4">
-                ・<%= objective.achievement %>%
-            </div>
-                <%= link_to "詳細", user_objective_path(objective),class: "btn btn-success" %>
-            </div>
-            <% end %>
+        <div class="mb-4">
+            ・<%= objective.title %>
+        </div>
+        <div class="mb-4">
+            <h4>意気込み</h4>
+        </div>
+        <div class="mb-4">
+            ・<%= objective.explain %>
+        </div>
+        <div class="mb-4">
+            <h3>達成度</h3>
+        </div>
+        <div class="mb-4">
+            ・<%= objective.achievement %>%
+        </div>
+            <%= link_to "詳細", user_objective_path(objective),class: "btn btn-success" %>
+    </div>
+    <% end %>
 </div>
        

@@ -10,13 +10,31 @@
   </head>
 
   <body>
-    <nav class="navbar navbar-inverse">
-      <div class="navbar-brand">Target</div>
-        <ul class="nav navbar-nav header-li">
-          <li><%= link_to "ユーザー一覧",user_users_path %></li>
-          <li><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></li>
+  <% if user_signed_in? %> 
+    <nav class="navbar navbar-inverse header mb-5">
+      <div class="container-fluid">
+        <div class="navbar-header">
+            <div class="navbar-brand"><%= link_to "Target", root_path,class: "title" %></div>
+        </div>
+        <ul class="nav navbar-nav link-parent">
+          <li><%= link_to "ユーザー一覧",user_users_path,class:"link" %></li>
+          <li><%= link_to "目標を投稿する",new_user_objective_path,class:"link" %></li>
+          <li><%= link_to "ログアウト", destroy_user_session_path, method: :delete,class:"link" %></li>
         </ul>
+      </div>
     </nav>
+    <% else %>
+    <nav class="navbar navbar-inverse header mb-5">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <div class="navbar-brand"><%= link_to "Target", root_path %></div>
+        </div>
+        <ul class="nav navbar-nav link-parent">
+          <li><%= link_to "新規登録",user_users_path,class:"link" %></li>
+        </ul>
+      </div>
+    </nav>
+    <% end %>
     <%= yield %>
   </body>
 </html>

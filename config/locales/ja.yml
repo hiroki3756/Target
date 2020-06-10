@@ -1,0 +1,11 @@
+ja:
+  activerecord:
+    attributes:
+      objective:
+        title: 目標
+        explain: 意気込み
+        tag_list: カテゴリー
+      comment:
+        comment: コメント
+      user:
+        name: 名前

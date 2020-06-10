@@ -1,12 +1,19 @@
-<div class="container offset-5">
-    <div class="row">
+<% if flash[:notice] %>
+    <div class="flash">
+        <%= flash[:notice] %>
+    </div>
+<% end %>
+
+
+<div class="container">
+    <div class="">
         <h1>ユーザー詳細</h1>
     </div>
-    <div class="row">
-        <%= attachment_image_tag @user, :profile_image, :fill, 60, 60, fallback: "no_image.png", size:'150x150', class: "" %>
+    <div class="">
+        <%= attachment_image_tag @user, :profile_image, :fill, 60, 60, fallback: "no_image.png", size:'150x150', class: "user-show-img" %>
     </div>
-    <div class="row">
-        <table>
+    <div class="">
+        <table class="table table-border">
             <tr>
                 <th>名前</th>    
                 <td><%= @user.name %></td>
@@ -16,29 +23,31 @@
                 <td><%= @user.introduction %></td>
             </tr>
 
-        <%= link_to following_user_user_path(@user) do %>
             <tr>
-                <td>フォロー数<%= @user.followings.count %></td><br>
+                <th>フォロー数</th>
+                <td><%= link_to following_user_user_path(@user) do %>
+                    <%= @user.followings.count %>
+                <% end %></td>
             </tr>
-        <% end %>
-        <%= link_to followers_user_user_path(@user) do %>
             <tr>
-                <td>フォロワー数:<%= @user.followers.count %></td>
+            <th>フォロワー数</th>
+                <td><%= link_to followers_user_user_path(@user) do %>
+                    <%= @user.followers.count %>
+                <% end %></td>
             </tr>
-        <% end %>
         <% unless current_user == @user %>
         <% if current_user.following?(@user) %>
             <%= form_for(current_user.relationships.find_by(follow_id: @user.id), html: { method: :delete }) do |f| %>
             <%= hidden_field_tag :follow_id, @user.id %>
             <tr>
-                <td><%= f.submit 'Unfollow', class: "follow-btn" %></td>
+                <td><%= f.submit 'フォローを外す', class: "btn btn-danger" %></td>
             </tr>
             <% end %>
         <% else %>
             <%= form_for(current_user.relationships.build) do |f| %>
             <%= hidden_field_tag :follow_id, @user.id %>
             <tr>
-                <td><%= f.submit 'Follow', class: "btn-success" %></td>
+                <td><%= f.submit 'フォローする', class: "btn btn-success" %></td>
             </tr>
             <% end %>
         <% end %>
@@ -46,12 +55,52 @@
         </div>
         <tr>
             <% if @user == current_user %>
-                <td><%= link_to "編集する", edit_user_user_path %></td>
+                <td><%= link_to "編集する", edit_user_user_path,class:"btn btn-success" %></td>
             <% end %>
         </tr>
         </table>
     </div>
-        <div class="row mt-5 mb-4">
-            <%= link_to "このユーザーの目標一覧に飛ぶ", user_objectives_path %>
+    <h2 class="mt-5">ユーザーの目標一覧を表示</h2>
+    <div class="mb-4 mt-3 index">
+        <img src="/assets/sun.gif" class="sun"><h4>目標一覧</h4><img src="/assets/sun.gif" class="sun">
+    </div>
+    <div class="sort">
+        <tr>
+            <th>並び替え</th>
+            <th><%= sort_link(@q, :title, "タイトル") %></th>
+            <th><%= sort_link(@q, :achievement, "達成度") %></th>
+            <th colspan="3"></th>
+        </tr>
+    </div>
+    <% @objectives.each do |objective| %>
+    <div class="target">
+        <div class="mb-4">
+            <h4>目標</h4>
         </div>
+        <div class="mb-4">
+            ・<%= objective.title %>
+        </div>
+        <div class="mb-4">
+            <h4>意気込み</h4>
+        </div>
+        <div class="mb-4">
+            ・<%= objective.explain %>
+        </div>
+        <div class="mb-4">
+            <h3>達成度</h3>
+        </div>
+        <div class="mb-4">
+            ・<%= objective.achievement %>%
+        </div>
+        <div class="mb-4">
+            <h3>カテゴリー</h3>
+        </div>
+        <div class="mb-4">
+            <% objective.tag_list.each do |tag| %>
+            ・<%= link_to tag, user_user_path(tag_name: tag) %>
+            <% end %>
+        </div>
+            <%= link_to "詳細", user_objective_path(objective),class: "btn btn-success" %>
+    </div>
+    <% end %>
 </div>

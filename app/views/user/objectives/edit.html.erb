@@ -1,31 +1,33 @@
-<div class="container offset-5">
-    <div class="row">
+<div class="container">
+    <div class="">
         <h1>編集する</h1>
     </div>
-    <%= form_for @objective, url:user_objective_path(@objective) do |f| %>
-        <%# タイトルを入力 %>
-        <div class="row">
-            <p>タイトルを入力</p>
-        </div>
-        <div class="row mb-5">
-            <%= f.text_field :title %><br>
-        </div>
-        <%# 目標の詳細を入力 %>
-        <div class="row">
-            <p>本文を入力</p>
-        </div>
-        <div class="row mb-5">
-            <%= f.text_area :explain %><br>
-        </div>
-<%# 達成度を入力 %>
-        <div class="row">
-            <p>達成度を入力</p>
-        </div>
-        <div class="row mb-5">
-            <%= f.number_field :achievement %>%<br>
-        </div>
-        <div class="row mb-5"> 
-            <%= f.submit "目標を更新", class: "btn btn-success" %>
-        </div>
-    <% end %>
+    <div class="form-group">
+        <%= form_for @objective, url:user_objective_path(@objective) do |f| %>
+            <%# タイトルを入力 %>
+            <div class="">
+                <p>タイトルを入力</p>
+            </div>
+            <div class="mb-5">
+                <%= f.text_field :title,class:"form-control" %>
+            </div>
+            <%# 目標の詳細を入力 %>
+            <div class="">
+                <p>本文を入力</p>
+            </div>
+            <div class="mb-5">
+                <%= f.text_area :explain,class:"form-control" %>
+            </div>
+    <%# 達成度を入力 %>
+            <div class="">
+                <p>達成度を入力</p>
+            </div>
+            <div class="mb-5">
+                <%= f.number_field :achievement,class:"form-control" %>%
+            </div>
+            <div class="mb-5"> 
+                <%= f.submit "目標を更新", class: "btn btn-success form-control" %>
+            </div>
+        <% end %>
+    </div>
 </div>
