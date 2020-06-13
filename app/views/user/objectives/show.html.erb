@@ -4,6 +4,12 @@
     </div>
 <% end %>
 
+<% if flash[:alert] %>
+    <div class="alert">
+        <%= flash[:alert] %>
+    </div>
+<% end %>
+
 
 
 <div class="container">
@@ -59,10 +65,10 @@
             <% @comments.each do |comment| %>
                 <div class="mb-2">
                     <%= comment.comment %>
+                    <% if comment.user == current_user %>
+                        <%= link_to "削除", user_objective_comment_path(comment.objective, comment), method: :delete, class: "btn btn-danger ml-5" %>
+                    <% end %>
                 </div>
-                <% if comment.user == current_user %>
-                    <%= link_to "削除", user_objective_comment_path(comment.objective, comment), method: :delete, class: "btn btn-danger" %>
-                <% end %>
             <% end %>
         <div class="form-group">
             <%= form_for @comment,url: user_objective_comments_path(@objective) do |f| %>

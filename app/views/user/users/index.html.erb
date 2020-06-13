@@ -1,4 +1,6 @@
 <div class="container">   
+    <%# 検索フォームの設置 %>
+
     <%= search_form_for @search,url:user_users_path  do |f| %>
         <div class="form-group">
         <%= f.label :name_cont, "ユーザーの名前で検索してください" %>
@@ -6,6 +8,9 @@
         </div>
         <div class="actions"><%= f.submit "検索する" %></div>
     <% end %>
+
+    <%# 検索の結果の表示 %>
+
     <h4 class="mt-3">検索の結果</h4>
     <% if @results.any? %>
         <% @results.each do |result| %>
@@ -14,6 +19,8 @@
             <div class="mr-5 mt-3">
                 <%= result.name %>
             </div>
+            
+            <%# フォロー数、フォロワー数の表示 %>
             <div class="mr-5 mt-3">
                 <%= link_to following_user_user_path(result) do %>
                     フォロー数<%= result.followings.count %></td>
@@ -31,9 +38,9 @@
     <% end %>
     <% end %>
 
-    <div class="">
-        <h1>ユーザー一覧</h1>
-    </div>
+    <%# ユーザー一覧の表示 %>
+
+    <h1>ユーザー一覧</h1>
     <% @users.each do |user| %>
         <div class="m-5 user-index">
                 <%= attachment_image_tag user, :profile_image, :fill, 80, 80, fallback: "no_image.png", size:'80x80',class: "mr-5 user-index-img" %>
