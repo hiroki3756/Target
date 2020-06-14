@@ -1,3 +1,19 @@
+<%# フラッシュメッセージを表示 %>
+<% if flash[:notice] %>
+    <div class="alert">
+        <%= flash[:notice] %>
+    </div>
+<% end %>
+
+<%# エラーメッセージを表示 %>
+<% if resource.errors.any? %>
+    <% resource.errors.full_messages.each do |message| %>
+        <div class="error mt-5">
+            <%= message %>
+        </div>
+    <% end %>
+<% end %>
+
 <div class="container">
   <div class="row m-5 ">
     <h2>ログイン</h2>

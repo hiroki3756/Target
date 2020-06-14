@@ -9,3 +9,16 @@ ja:
         comment: コメント
       user:
         name: 名前
+  devise:
+    sessions:
+      user:
+        signed_in: ログインに成功しました
+        signed_out: ログアウトに成功しました
+  views:
+    pagination:
+      first: '最初'
+      last: '最後'
+      previous: '前'
+      next: '次'
+      truncate: '...'
+    

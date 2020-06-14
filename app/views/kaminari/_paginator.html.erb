@@ -12,14 +12,16 @@
     <%= prev_page_tag unless current_page.first? %>
     <% each_page do |page| -%>
       <% if page.display_tag? -%>
+      <div class="page">
         <%= page_tag page %>
+        </div>
       <% elsif !page.was_truncated? -%>
         <%= gap_tag %>
-      <% end -%>
-    <% end -%>
-    <% unless current_page.out_of_range? %>
+        <% end -%>
+        <% end -%>
+      <% unless current_page.out_of_range? %>
       <%= next_page_tag unless current_page.last? %>
       <%= last_page_tag unless current_page.last? %>
-    <% end %>
+      <% end %>
   </nav>
 <% end -%>

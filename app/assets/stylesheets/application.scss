@@ -49,12 +49,9 @@ body {
     line-height: 100px;   
 }
 
-.link-parent {
-    display: flex;
-}
-
 .link {
     color: white;
+    margin-right: 20px;
 }
 
 .title {
@@ -88,7 +85,7 @@ header {
     background-image: image-url("back.jpg");
     background-size: cover;
     background-position: center;
-    height: 100vh;
+    // height: 100vh;
 }
 
 .welcome {
@@ -341,6 +338,10 @@ footer {
     right: 45px;
     border: solid 3px #fff; /*チョーク（白） */
     border-radius: 8px 5px 2px 5px;
+   }
+
+   .page {
+       text-align: center;
    }
 
 // フォローしてる人の一覧画面のレイアウト

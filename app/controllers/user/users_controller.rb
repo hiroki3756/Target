@@ -10,7 +10,7 @@ class User::UsersController < ApplicationController
     def show
         @user = User.find(params[:id])
         @q = Objective.ransack(params[:q])
-        @objectives = @q.result(distinct: true)
+        @objectives = @q.result(distinct: true).page(params[:page])
         if params[:tag_name]
             @objectives = Objective.tagged_with("#{params[:tag_name]}")
         end
