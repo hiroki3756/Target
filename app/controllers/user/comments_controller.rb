@@ -11,6 +11,7 @@ class User::CommentsController < ApplicationController
             flash[:notice] = "コメントを投稿しました"
         else
             redirect_to user_objective_path(objective)
+            flash[:alert] = "コメントの投稿に失敗しました"
         end
     end
 

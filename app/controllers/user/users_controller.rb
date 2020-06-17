@@ -1,18 +1,24 @@
 class User::UsersController < ApplicationController
     # ユーザー一覧の表示
     def index
-        @users = User.all
         @search = User.ransack(params[:q])
-        @results = @search.result 
+        @results = @search.result.page(params[:page])
     end
     
     # ユーザー詳細の表示
     def show
         @user = User.find(params[:id])
         @q = Objective.ransack(params[:q])
-        @objectives = @q.result(distinct: true).page(params[:page])
+        @objectives = @user.objectives.page(params[:page])
+
+        
+        #目標検索のための記述
+        @search = Objective.ransack(params[:q])
+        @results = @search.result.page(params[:page])
+        
+        #絞り込みのための記述
         if params[:tag_name]
-            @objectives = Objective.tagged_with("#{params[:tag_name]}")
+            @results = Objective.tagged_with("#{params[:tag_name]}").page(params[:page])
         end
     end
 

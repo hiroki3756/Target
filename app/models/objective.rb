@@ -1,5 +1,8 @@
 class Objective < ApplicationRecord
+
+    #タグ付のための記述
     acts_as_taggable
+
     # モデルの関連付け
     belongs_to :user, optional: true
     has_many :comments, dependent: :destroy

@@ -14,6 +14,9 @@ ja:
       user:
         signed_in: ログインに成功しました
         signed_out: ログアウトに成功しました
+    registrations:
+      user:
+        signed_up: 会員登録に成功しました
   views:
     pagination:
       first: '最初'

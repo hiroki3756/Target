@@ -11,7 +11,7 @@
 
     <%# 検索の結果の表示 %>
 
-    <h4 class="mt-3">検索の結果</h4>
+    <h4 class="mt-3">ユーザー一覧</h4>
     <% if @results.any? %>
         <% @results.each do |result| %>
             <div class="mb-5 user-index">
@@ -38,28 +38,8 @@
     <% end %>
     <% end %>
 
-    <%# ユーザー一覧の表示 %>
 
-    <h1>ユーザー一覧</h1>
-    <% @users.each do |user| %>
-        <div class="m-5 user-index">
-                <%= attachment_image_tag user, :profile_image, :fill, 80, 80, fallback: "no_image.png", size:'80x80',class: "mr-5 user-index-img" %>
-                <div class="mr-5 mt-3">  
-                    <%= user.name %> 
-                </div>
-                <div class="mr-5 mt-3">
-                    <%= link_to following_user_user_path(user) do %>
-                        フォロー数<%= user.followings.count %></td>
-                    <% end %>
-                </div>
-                <div class="mr-5 mt-3">
-                    <%= link_to followers_user_user_path(user) do %>
-                        フォロワー数:<%= user.followers.count %>
-                    <% end %>
-                </div>
-                <div class="mt-3 ml-5">
-                    <%= link_to "詳細", user_user_path(user), class: "user-index-a btn btn-success" %>
-                </div>
-        </div>
-    <% end %>
+    
+    
+    <%= paginate @results %>
 </div>

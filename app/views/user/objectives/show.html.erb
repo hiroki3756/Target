@@ -60,6 +60,7 @@
     </div>
     <div class="comment">
         <div class="mt-3 mb-4">
+        <% if @objective.user == current_user %>
             <h4>コメント一覧</h4>
         </div>
             <% @comments.each do |comment| %>
@@ -85,6 +86,7 @@
             <div class="mb-5">
                 <%= f.submit "コメントを投稿する" %>
             </div>
+            <% end %>
             <% end %>
         </div>
     </div>
