@@ -73,7 +73,7 @@
         </tr>
     </div>
     <%# 絞り込み解除のための記述　%>
-    <%= link_to "絞り込みを解除する",user_user_path(@user), class:"tag btn btn-danger" %>
+    <%= link_to "絞り込みを解除する",user_user_path(@user), class:"tag btn btn-danger mb-5" %>
 
     <%# 検索窓の設置 %>
     <%= search_form_for @search,url:user_user_path(@user)  do |f| %>
@@ -84,46 +84,51 @@
         <div class="actions"><%= f.submit "検索する" %></div>
     <% end %>
 
-
+    
     <h4 class="mt-3">目標一覧</h4>
     <% if @results.any? %>
         <% @results.each do |result| %>
-    <div class="target">
-        <div class="mb-4">
-            <h4>目標</h4>
-        </div>
-        <div class="mb-4">
-            ・<%= result.title %>
-        </div>
-        <div class="mb-4">
-            <h4>意気込み</h4>
-        </div>
-        <div class="mb-4">
-            ・<%= result.explain %>
-        </div>
-        <div class="mb-4">
-            <h3>達成度</h3>
-        </div>
-        <div class="mb-4">
-            ・<%= result.achievement %>%
-        </div>
-        <div class="mb-4">
-            <h3>カテゴリー</h3>
-        </div>
-        <div class="mb-4">
-            <% result.tag_list.each do |tag| %>
-            ・<%= link_to tag, user_user_path(tag_name: tag) %>
-            <% end %>
-        </div>
-        <div class="mb-4">
-            <h3>投稿者</h3>
-        </div>
-        <div class="mb-4">
-            <%= result.user.name %>
-        </div>
-            <%= link_to "詳細", user_objective_path(result),class: "btn btn-success" %>
-    </div>
-    <% end %>
+            
+                <div class="target">
+                    <div class="mb-4">
+                        <h4>目標</h4>
+                    </div>
+                    <div class="mb-4">
+                        ・<%= result.title %>
+                    </div>
+                    <div class="mb-4">
+                        <h4>意気込み</h4>
+                    </div>
+                    <div class="mb-4">
+                        ・<%= result.explain %>
+                    </div>
+                    <div class="mb-4">
+                        <%= column_chart [["達成度",result.achievement]], min: 0, max: 100,  colors: ["pink", "#999"], class:"graph" %>
+                    </div>
+                    <div class="mb-4">
+                        <h3>達成度</h3>
+                    </div>
+                    <div class="mb-4">
+                        ・<%= result.achievement %>%
+                    </div>
+                    <div class="mb-4">
+                        <h3>カテゴリー</h3>
+                    </div>
+                    <div class="mb-4">
+                        <% result.tag_list.each do |tag| %>
+                        ・<%= link_to tag, user_user_path(tag_name: tag) %>
+                        <% end %>
+                    </div>
+                    <div class="mb-4">
+                        <h3>投稿者</h3>
+                    </div>
+                    <div class="mb-4">
+                        <%= result.user.name %>
+                    </div>
+                        <%= link_to "詳細", user_objective_path(result),class: "btn btn-success" %>
+                </div>
+            
+        <% end %>
     <% end %>
     <%= paginate @results %>
 </div>

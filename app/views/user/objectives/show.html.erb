@@ -29,6 +29,9 @@
         <div class="mb-5">
             <%= @objective.explain %>
         </div>
+        <div class="mb-4">
+            <%= column_chart [["達成度",@objective.achievement]], min: 0, max: 100,  colors: ["pink", "#999"], class:"graph" %>
+        </div>
         <div class="mb-3">
             <h4>達成度</h4>
         </div>

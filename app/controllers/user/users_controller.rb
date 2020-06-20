@@ -13,13 +13,15 @@ class User::UsersController < ApplicationController
 
         
         #目標検索のための記述
-        @search = Objective.ransack(params[:q])
+        @search = Objective.where(user_id: @user).ransack(params[:q])
         @results = @search.result.page(params[:page])
         
         #絞り込みのための記述
         if params[:tag_name]
             @results = Objective.tagged_with("#{params[:tag_name]}").page(params[:page])
         end
+
+        @data = [['2019-06-01',50]]
     end
 
     # ユーザー情報編集画面の表示
