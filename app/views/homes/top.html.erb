@@ -17,7 +17,7 @@
                     ・達成したい目標が決まったら新規投稿してみましょう。<br>
                     ・達成度の入力、コメントなど追記できます！
                 </p>
-                <img src="/assets/target1.jpg">
+                <%= image_tag asset_path("target1.jpg") %>
             </div>
         </div>
         <div class="introduction fadein">
@@ -26,21 +26,27 @@
         <div class="intro-bottom">
             <div class="intro2 int4 fadein">
                 <div class="intro-section">
-                    <img src="/assets/heart.jpg" class="int4-img fadein">
+                    <div class="int4-img fadein">
+                        <%= image_tag asset_path("heart.jpg") %>
+                    </div>
                     <h2>いいね 機能</h2>
                     <p>他人の目標にいいねをつけることができます</p>
                 </div>
             </div>
             <div class="intro2 int5 fadein">
                 <div class="intro-section">
-                    <img src="/assets/hukidashi2.jpg" class="int4-img fadein">
+                    <div class="int4-img fadein">
+                        <%= image_tag asset_path("hukidashi2.jpg") %>
+                    </div>
                     <h2>コメント 機能</h2>
                     <p>他人の目標にコメントをつけることができます</p>
                 </div>
             </div>
             <div class="intro2 int6 fadein">
                 <div class="intro-section">
-                    <img src="/assets/hyousyou.png" class="int4-img fadein">
+                    <div class="int4-img fadein">
+                        <%= image_tag asset_path("hyousyou.png") %>
+                    </div>
                     <h2>ソート機能</h2>
                     <p>目標を名前順、達成度順に並び替えることができます</p>
                 </div>
