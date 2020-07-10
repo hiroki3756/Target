@@ -1,0 +1,96 @@
+<% if flash[:notice] %>
+    <div class="flash">
+        <%= flash[:notice] %>
+    </div>
+<% end %>
+
+<% if flash[:alert] %>
+    <div class="alert">
+        <%= flash[:alert] %>
+    </div>
+<% end %>
+
+
+
+<div class="container">
+    <div class="mb-5 show-title">
+        <h1>目標詳細</h1>
+    </div>
+    <div class="show">
+        <div class="mb-3">
+            <h4>目標</h4>
+        </div>
+        <div class="mb-5">
+            <%= @objective.title %>
+        </div>
+        <div class="mb-3">
+            <h4>意気込み</h4>
+        </div>
+        <div class="mb-5">
+            <%= @objective.explain %>
+        </div>
+        <div class="mb-4">
+            <%= column_chart [["達成度",@objective.achievement]], min: 0, max: 100,  colors: ["pink", "#999"], class:"graph" %>
+        </div>
+        <div class="mb-3">
+            <h4>達成度</h4>
+        </div>
+        <div class="mb-5">
+            <%= @objective.achievement %>%
+        </div>
+
+        <% if @objective.favorited_by?(current_user) %>
+        <li class="mb-5">
+            <%= link_to user_objective_favorites_path(@objective), method: :delete do %>
+            <i class="fa fa-heart" aria-hidden="true" style="color: red;"></i>
+            <%= @objective.favorites.count %> いいね
+            <% end %>
+        </li>
+        <% else %>
+        <li class="mb-5">
+            <%= link_to user_objective_favorites_path(@objective), method: :post do %>
+            <i class="fa fa-heart-o" aria-hidden="true"></i>
+            <%= @objective.favorites.count %> いいね
+            <% end %>
+        </li>
+        <% end %>
+        <div class="edit-btn">
+        <%= link_to "編集する", edit_user_objective_path(@objective),class: "btn btn-success mb-3" %><br>
+        </div>
+        <div class="destroy-btn">
+            <%= link_to "削除する", user_objective_path, method: :delete, class: "btn btn-danger" %><br>
+        </div>
+    </div>
+    <div class="comment">
+        <div class="mt-3 mb-4">
+        <% if @objective.user == current_user %>
+            <h4>コメント一覧</h4>
+        </div>
+            <% @comments.each do |comment| %>
+                <div class="mb-2">
+                    <%= comment.comment %>
+                    <% if comment.user == current_user %>
+                        <%= link_to "削除", user_objective_comment_path(comment.objective, comment), method: :delete, class: "btn btn-danger ml-5" %>
+                    <% end %>
+                </div>
+            <% end %>
+        <div class="form-group">
+            <%= form_for @comment,url: user_objective_comments_path(@objective) do |f| %>
+                <% if @comment.errors.any? %>
+                    <% @comment.errors.full_messages.each do |message| %>
+                        <div class="error">
+                            <%= message %>
+                        </div>
+                    <% end %>
+                <% end %>
+            <div class="mb-5">
+                <%= f.text_area :comment, class:"form-control", placeholder: "コメントを入力してください" %>
+            </div>
+            <div class="mb-5">
+                <%= f.submit "コメントを投稿する" %>
+            </div>
+            <% end %>
+            <% end %>
+        </div>
+    </div>
+</div>

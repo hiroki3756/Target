@@ -1,0 +1,34 @@
+<div class="container">
+    <div class="form-group">
+        <%= form_for @objective, url:user_objectives_path  do |f| %>
+        <% if @objective.errors.any? %>
+            <% @objective.errors.full_messages.each do |message| %>
+                <div class="error">
+                    <%= message %>
+                </div>
+            <% end %>
+        <% end %>
+        <div class="mb-4">
+            <h4>目標を入力</h4>
+        </div>
+        <div class="mb-4">
+            <%= f.text_field :title,class:"form-control" %>
+        </div>
+        <div class="mb-4">
+            <h4>意気込みを入力</h4>
+        </div>
+        <div class="mb-4">
+            <%= f.text_area :explain,class:"form-control" %>
+        </div>
+        <div class="mb-4">
+            <h4>カテゴリーを入力</h4>
+        </div>
+        <div class="mb-4">
+            <%= f.text_field :tag_list,value: @objective.tag_list.join(','), class:"form-control", placeholder:"例:ダイエット, 夏" %>
+        </div>
+        <div class="">
+            <%= f.submit "目標を投稿", class: "btn btn-success form-control" %>
+        </div>
+        <% end %>
+    </div>
+</div>

@@ -1,0 +1,27 @@
+ja:
+  activerecord:
+    attributes:
+      objective:
+        title: 目標
+        explain: 意気込み
+        tag_list: カテゴリー
+      comment:
+        comment: コメント
+      user:
+        name: 名前
+  devise:
+    sessions:
+      user:
+        signed_in: ログインに成功しました
+        signed_out: ログアウトに成功しました
+    registrations:
+      user:
+        signed_up: 会員登録に成功しました
+  views:
+    pagination:
+      first: '最初'
+      last: '最後'
+      previous: '前'
+      next: '次'
+      truncate: '...'
+    

@@ -1,0 +1,359 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+ // Custom bootstrap variables must be set or imported *before* bootstrap.
+@import "bootstrap";
+@import "font-awesome";
+
+// 共通のレイアウト
+
+body {
+    background: #eee;
+}
+
+.header {
+    background: skyblue;
+    padding: 20px;
+    position: fixed;
+    top: 0;
+    transition: .5s;
+    width: 100%;
+    z-index: 999;
+    color: white;
+    margin-bottom: 100px;
+}
+
+.flash {
+    margin-top: 100px;
+    background: lightgreen;
+    height: 100px;
+    line-height: 100px;
+}
+
+.alert {
+    margin-top: 100px;
+    background: red;
+    height: 100px;
+    line-height: 100px;   
+}
+
+.link {
+    color: white;
+    margin-right: 20px;
+}
+
+.title {
+    color: white;
+}
+
+.container {
+    margin-top: 150px;
+}
+
+
+
+
+.header.hide{
+    transform: translateY(-100%);
+}
+// ルート画面のレイアウト 
+
+.bg-video {
+    position:fixed;
+    right:0;
+    bottom:0;
+    min-width:100%;
+    min-height:100%;
+    width:auto;
+    height:auto;
+    z-index:-1;
+}
+
+header {
+    background-image: image-url("back.jpg");
+    background-size: cover;
+    background-position: center;
+    // height: 100vh;
+}
+
+.welcome {
+    line-height: 70vh;
+    text-align: center;
+    color: white;
+}
+
+.header-logo {
+    background: skyblue;
+    padding: 20px;
+    position: fixed;
+    top: 0;
+    transition: .5s;
+    width: 100%;
+    z-index: 999;
+}
+
+.header-logo p {
+    float: left;
+    margin: 10px;
+}
+
+.header-logo ul {
+    display: flex;
+    list-style: none;
+    justify-content: flex-end;
+}
+
+.header-logo li {
+    margin: 10px;
+}
+
+main {
+    background-size: cover;
+    margin-top: 0;
+}
+
+.introduction {
+    background: black;
+    color: white;
+    text-align: center;
+    height: 200px;
+    margin-top: 50px;
+}
+
+.introduction h2 {
+    line-height: 200px;
+}
+
+.intro-section {
+    text-align: center;
+}
+
+.intro-bottom {
+    background: white;
+}
+
+.intro1 {
+    border-radius: 50px;
+    color: skyblue;
+    margin-top: 100px;
+    display: flex;
+    height: 600px;
+    background: white;
+}
+
+.intro1 img {
+    border-radius: 50%;
+    padding: 20px;
+    width: 400px;
+}
+
+.intro1 p {
+    padding: 50px;
+    font-size: 50px;
+}
+
+.int2 {
+    background-image: image-url("background.png");
+}
+
+.intro-bottom {
+    display: flex;
+}
+
+.intro2 {
+    margin: 100px 30px;
+    width: 33%;
+}
+
+.int4-img img {
+    border-radius: 50%;
+    width: 300px;
+    height: 300px;
+    margin-bottom: 20px;
+}
+
+footer {
+    background: #808080;
+    height: 100px;
+}
+
+.fadein {
+    opacity: 0;
+    transform : translate(0, 50px);
+    transition : all 1500ms;
+}
+  
+.fadein.scrollin {
+    opacity: 1;
+    transform: translate(0, 0);
+}
+
+
+
+
+//  サインアップ画面のレイアウト
+
+
+
+// 目標投稿画面のレイアウト
+.error {
+    color: red;
+}
+
+// 目標一覧のレイアウト
+.index {
+    text-align: center;
+    width: 600px;
+    margin: 0 auto;
+}
+
+
+
+// 目標詳細画面のレイアウト
+.show-title {
+    text-align: center;
+}
+
+// .show {
+//     border-radius: 30px;
+//     background-color: white;
+//     margin-top: 30px;
+//     width: 1000px;
+//     margin: 50px auto;
+//     text-align: center;
+//     background-image: url("kokuban.png");
+//     background-size: cover;
+//     background-position: 50% 10%;
+//     padding: 20px;
+// }
+
+// .comment {
+//     border-radius: 30px;
+//     margin-top: 30px;
+//     width: 500px;
+//     margin: 20px auto;
+//     text-align: center;
+//     padding: 20px;
+//     background: white;
+// }
+
+.edit-btn, .destroy-btn {
+    text-align: center;
+}
+
+.destroy-btn {
+    margin-bottom: 20px;
+}
+
+.mb-4, .mb-5 {
+    list-style: none;
+}
+
+.sort {
+    text-align: right;
+}
+
+.chartjs-render-monitor {
+    background: white;
+}
+// 目標編集画面のレイアウト
+
+
+
+
+// ユーザー一覧画面のレイアウト
+   .user-index {
+    padding: 1em;
+    margin: 2em auto;
+    width:100%;
+    color: #595959;
+    background: #fff;
+    border-bottom: solid 5px #9b0000;
+    border-radius: 30px;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.25);
+    display: flex;
+   }
+
+   .user-index-img {
+       border-radius: 50%;
+   }
+
+
+
+
+// ユーザ詳細画面のレイアウト
+.user-show-img {
+    border-radius: 50%;
+}
+
+// .target {
+//     border-radius: 30px;
+//     background-color: white;
+//     background-image: url("flame.jpg");
+//     background-size: cover;
+//     background-position: center;
+//     margin-top: 30px;
+//     width: 500px;
+//     margin: 0 auto;
+//     text-align: center;
+//     padding: 60px;
+//     float: left;
+//     margin: 20px;
+//     color: lime;
+// }
+
+.target, .show, .comment {
+    position: relative;
+    margin: 2em auto;
+    padding: 1em;
+    width: 90%; /* ボックス幅 */
+    background: #006633; /* ボックス背景色 */
+    color: #fff; /* 文章色 */
+    border: 8px solid #b2771f; /* 枠線 */
+    border-radius: 3px; /* 角の丸み */
+    box-shadow: 0 0 5px #333, 0 0 5px #555 inset;
+    text-align: center;
+   }
+   .target::before,
+   .target::after {
+    position: absolute;
+    content: '';
+    bottom: 0;
+   } 
+   .target::before {
+    width: 20px; 
+    right: 10px;
+    border: solid 3px #ffff00; /*チョーク（黄色）*/
+    border-radius: 3px 2px 0 2px;
+   }
+   .target::after {
+    width: 15px; 
+    right: 45px;
+    border: solid 3px #fff; /*チョーク（白） */
+    border-radius: 8px 5px 2px 5px;
+   }
+
+   .page {
+     text-align: center;
+   }
+
+// フォローしてる人の一覧画面のレイアウト
+.follow-index {
+    background: white;
+    border-radius: 30px;
+    line-height: 70px;
+}
+
+
